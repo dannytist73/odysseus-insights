@@ -4,6 +4,63 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingOverlay = document.getElementById("loadingOverlay");
   const resultsSection = document.getElementById("results");
 
+  // Budget input handling
+  const budgetInput = document.querySelector('input[name="budget"]');
+
+  if (budgetInput) {
+    // Only allow numbers and prevent non-numeric input
+    budgetInput.addEventListener("keypress", function (e) {
+      // Allow only numbers (0-9) and decimal point
+      if (!((e.charCode >= 48 && e.charCode <= 57) || e.charCode === 46)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Prevent multiple decimal points
+      if (e.charCode === 46 && this.value.includes(".")) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Clean input on paste
+    budgetInput.addEventListener("paste", function (e) {
+      e.preventDefault();
+      const pastedText = (e.clipboardData || window.clipboardData).getData(
+        "text"
+      );
+      const cleanedText = pastedText.replace(/[^\d.]/g, "");
+
+      // Handle decimal points
+      const parts = cleanedText.split(".");
+      if (parts.length > 1) {
+        // Keep only first decimal point and limit to 2 decimal places
+        this.value = parts[0] + "." + parts.slice(1).join("").slice(0, 2);
+      } else {
+        this.value = cleanedText;
+      }
+    });
+
+    // Format number while typing
+    budgetInput.addEventListener("input", function (e) {
+      // Remove any non-numeric characters except decimal point
+      let value = this.value.replace(/[^\d.]/g, "");
+
+      // Ensure only one decimal point
+      const parts = value.split(".");
+      if (parts.length > 2) {
+        value = parts[0] + "." + parts.slice(1).join("");
+      }
+
+      // Limit to 2 decimal places
+      if (parts.length > 1) {
+        value = parts[0] + "." + parts[1].slice(0, 2);
+      }
+
+      this.value = value;
+    });
+  }
+
   // Enhanced currency formatting function
   function formatCurrency(amount, currencyCode) {
     if (!amount || isNaN(amount)) return "Free";
@@ -216,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   .map(
                     (day) => `
                     <div class="bg-white/5 rounded-lg p-6">
-                        <h4 class="text-white text-xl font-semibold mb-4">${
+                        <h4 class="text-white text-xl font-semibold mb-4">Day ${
                           day.day
                         }</h4>
                         <div class="space-y-4">

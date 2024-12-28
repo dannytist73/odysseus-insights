@@ -11,8 +11,8 @@
         Generate Your Travel Insights
       </h1>
       <p class="text-white/80 text-xl max-w-3xl mx-auto">
-        Navigate your adventure with precision. Get real-time insights on
-        costs, weather, and accommodations.
+        Navigate your adventure with precision. Get real-time insights on costs,
+        weather, and accommodations.
       </p>
     </div>
 
@@ -79,11 +79,16 @@
             </label>
             <div class="relative">
               <input
-                type="number"
+                type="text"
+                inputmode="decimal"
                 name="budget"
                 placeholder="Your total budget"
                 class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 pl-12 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]"
                 required
+                min="0"
+                step="0.01"
+                pattern="[0-9]*\.?[0-9]*"
+                title="Please enter a valid amount"
               />
               <span
                 id="currencySymbol"
@@ -452,17 +457,15 @@
 </main>
 
 <!-- Loading Overlay -->
-<div
-  id="loadingOverlay"
-  class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50"
->
-  <div
-    class="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-  >
-    <div
-      class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#7FFFD4] mb-4"
-    ></div>
-    <p class="text-white text-lg">Gathering your travel insights...</p>
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">
+      <span class="block">Gathering your travel insights...</span>
+      <span class="block text-sm text-white/70 mt-2"
+        >This may take a few moments</span
+      >
+    </p>
   </div>
 </div>
 
