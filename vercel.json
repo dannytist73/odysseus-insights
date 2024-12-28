@@ -3,11 +3,16 @@
   "builds": [
     {
       "src": "index.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "views/**/*",
+          "public/**/*",
+          "routes/**/*",
+          "services/**/*",
+          "config/**/*"
+        ]
+      }
     }
   ],
   "routes": [
@@ -24,12 +29,11 @@
       "dest": "/public/images/$1"
     },
     {
-      "src": "/(.*\\.(ico|png|jpg|jpeg|gif|svg))",
-      "dest": "/public/$1"
+      "handle": "filesystem"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.js"
+      "src": "/.*",
+      "dest": "index.js"
     }
   ]
 }

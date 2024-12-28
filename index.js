@@ -13,6 +13,10 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// View engine setup
+app.set("view engine", "ejs");
+app.set("views", join(__dirname, "views"));
+
 app.use(compression());
 app.use(cors());
 app.use(express.json());
@@ -27,10 +31,6 @@ const limiter = rateLimit({
   max: 100, // Limit each IP to 100 request per 15 mins
 });
 app.use("/api/", limiter);
-
-// View engine setup
-app.set("view engine", "ejs");
-app.set("views", join(__dirname, "views"));
 
 // Routes
 app.get("/", (req, res) => {
@@ -58,13 +58,18 @@ app.get("/contact", (req, res) => {
 
 app.use("/voyage-compass", compassRoutes);
 
-// Error handling
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render("error", {
     title: "Error",
-    error: "Something went wrong!",
-    path: req.path,
+    error:
+      process.env.NODE_ENV === "production"
+        ? "Something went wrong!"
+        : err.message,
   });
 });
 
