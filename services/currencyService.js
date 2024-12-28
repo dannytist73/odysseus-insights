@@ -1,4 +1,6 @@
-// services/currencyService.js
+/**
+ * Currently disabled due to limited rates in free API. But can be used in the future if it scales.
+ */
 import axios from "axios";
 import NodeCache from "node-cache";
 
@@ -191,10 +193,10 @@ export async function getExchangeRates(sourceCurrency, targetCurrency) {
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
 
-    // Fallback to USD if anything goes wrong
+    // Fallback to PHP if anything goes wrong
     return {
-      source: "USD",
-      target: "USD",
+      source: "PHP",
+      target: "PHP",
       rate: 1,
       lastUpdated: Date.now(),
     };

@@ -119,7 +119,6 @@ select {
   background-color: rgba(127, 255, 212, 0.1);
 }
 
-/* Add this to your navigation.css */
 .loading-overlay {
   position: fixed;
   inset: 0;

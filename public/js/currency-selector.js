@@ -1,4 +1,3 @@
-// public/js/currency-selector.js
 document.addEventListener("DOMContentLoaded", function () {
   const currencySymbols = {
     USD: "$",

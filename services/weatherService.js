@@ -1,4 +1,6 @@
-// services/weatherService.js
+/**
+ * ! Currently disabled due to limited API rates
+ */
 import axios from "axios";
 import { config } from "../config.js";
 
@@ -138,14 +140,12 @@ function generateWeatherSummary(forecast) {
 
 function getWeatherIcon(iconCode) {
   // Map Meteosource icon codes to appropriate weather icons
-  // You can use Font Awesome or custom icons
   const iconMap = {
     clear_day: "fas fa-sun",
     cloudy: "fas fa-cloud",
     rain: "fas fa-cloud-rain",
     snow: "fas fa-snowflake",
     thunderstorm: "fas fa-bolt",
-    // Add more mappings as needed
   };
 
   return iconMap[iconCode] || "fas fa-cloud";

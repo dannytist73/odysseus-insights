@@ -1,4 +1,3 @@
-// voyage-compass.js
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("voyageForm");
   const loadingOverlay = document.getElementById("loadingOverlay");
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const budgetInput = document.querySelector('input[name="budget"]');
 
   if (budgetInput) {
-    // Only allow numbers and prevent non-numeric input
     budgetInput.addEventListener("keypress", function (e) {
       // Allow only numbers (0-9) and decimal point
       if (!((e.charCode >= 48 && e.charCode <= 57) || e.charCode === 46)) {
@@ -16,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
 
-      // Prevent multiple decimal points
+      // only one decimal point allowed
       if (e.charCode === 46 && this.value.includes(".")) {
         e.preventDefault();
         return false;
@@ -34,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Handle decimal points
       const parts = cleanedText.split(".");
       if (parts.length > 1) {
-        // Keep only first decimal point and limit to 2 decimal places
         this.value = parts[0] + "." + parts.slice(1).join("").slice(0, 2);
       } else {
         this.value = cleanedText;
@@ -43,16 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Format number while typing
     budgetInput.addEventListener("input", function (e) {
-      // Remove any non-numeric characters except decimal point
       let value = this.value.replace(/[^\d.]/g, "");
 
-      // Ensure only one decimal point
       const parts = value.split(".");
       if (parts.length > 2) {
         value = parts[0] + "." + parts.slice(1).join("");
       }
 
-      // Limit to 2 decimal places
       if (parts.length > 1) {
         value = parts[0] + "." + parts[1].slice(0, 2);
       }
@@ -61,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Enhanced currency formatting function
   function formatCurrency(amount, currencyCode) {
     if (!amount || isNaN(amount)) return "Free";
 
@@ -89,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getCurrencyCode(currency) {
     if (typeof currency === "object" && currency !== null) {
-      return currency.code || "PHP"; // fallback to PHP if code not found
+      return currency.code || "PHP";
     }
     return currency;
   }
@@ -115,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const responseText = await response.text();
-      console.log("Raw Response:", responseText);
+
+      //console.log("Raw Response:", responseText); // for debugging
 
       let results;
       try {

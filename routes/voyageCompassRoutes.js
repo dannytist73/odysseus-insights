@@ -10,7 +10,6 @@ const cache = new NodeCache({
   checkperiod: 120,
 });
 
-// Predefined list of valid currencies
 const VALID_CURRENCIES = [
   "USD",
   "EUR",
@@ -171,16 +170,14 @@ function sanitizeCurrency(currency) {
 }
 
 // Helper function to get exchange rates
+// Disabled due to rate limit of free version
 async function getExchangeRates(sourceCurrency, targetCurrency) {
   try {
-    // Sanitize currencies
     sourceCurrency = sanitizeCurrency(sourceCurrency);
     targetCurrency = sanitizeCurrency(targetCurrency);
 
-    // Create cache key
     const cacheKey = `exchange-${sourceCurrency}-${targetCurrency}`;
 
-    // Check cache first
     const cachedRates = cache.get(cacheKey);
     if (cachedRates) {
       return cachedRates;
@@ -209,15 +206,14 @@ async function getExchangeRates(sourceCurrency, targetCurrency) {
 
     // Fallback to default exchange rates
     return {
-      source: "USD",
-      target: "USD",
+      source: "PHP",
+      target: "PHP",
       rate: 1,
       lastUpdated: Date.now(),
     };
   }
 }
 
-// Route to display the voyage compass form
 router.get("/", (req, res) => {
   res.render("voyage-compass", {
     title: "Voyage Compass | Travel Insights",
@@ -226,7 +222,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// Route to handle the AI analysis
+// AI Analysis
 router.post("/calculate", limiter, async (req, res) => {
   req.setTimeout(120000);
   try {
