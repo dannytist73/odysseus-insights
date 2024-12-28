@@ -1,0 +1,120 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+.animate-fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Navigation backdrop */
+.nav-scrolled .nav-backdrop {
+  opacity: 1;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent background scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Menu animation */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-mobile-nav] a {
+  animation: menuFadeIn 0.3s ease forwards;
+  opacity: 0;
+}
+
+[data-mobile-nav] a:nth-child(1) {
+  animation-delay: 0.1s;
+}
+[data-mobile-nav] a:nth-child(2) {
+  animation-delay: 0.2s;
+}
+[data-mobile-nav] a:nth-child(3) {
+  animation-delay: 0.3s;
+}
+[data-mobile-nav] a:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Navigation backdrop for scroll */
+#mainNav {
+  transition: background-color 0.3s ease;
+}
+
+#mainNav.scrolled {
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 20, 55, 0.95),
+    rgba(13, 20, 55, 0.8)
+  );
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+}
+
+.currency-option {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.currency-option:hover {
+  background-color: rgba(127, 255, 212, 0.1);
+}

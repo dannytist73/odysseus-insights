@@ -1,0 +1,115 @@
+<!-- views/contact.ejs -->
+<%- include('./partials/header') %>
+
+<main
+  class="min-h-screen bg-gradient-to-b from-blue-900 via-[#1a237e] to-[#0d1437] pt-32"
+>
+  <div class="max-w-4xl mx-auto px-4 lg:px-8 pb-20">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-[#7FFFD4] text-4xl md:text-5xl font-semibold mb-4">
+        Connect With Us
+      </h1>
+      <p class="text-white/80 text-xl max-w-3xl mx-auto">
+        Have questions about Odysseus Travel Insight? Reach out to us through
+        any of our channels below.
+      </p>
+    </div>
+
+    <!-- Contact Methods Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Direct Contact -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+        <div
+          class="bg-[#7FFFD4]/20 w-16 h-16 rounded-full flex items-center justify-center mb-6"
+        >
+          <i class="fas fa-envelope text-[#7FFFD4] text-2xl"></i>
+        </div>
+        <h2 class="text-white text-2xl font-semibold mb-4">Direct Contact</h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-[#7FFFD4] text-lg mb-2">Email</h3>
+            <a
+              href="mailto:dannytist.73@gmail.com"
+              class="text-white/80 hover:text-[#7FFFD4] transition-colors flex items-center"
+            >
+              <i class="fas fa-envelope mr-2"></i>
+              dannytist.73@gmail.com
+            </a>
+          </div>
+          <div>
+            <h3 class="text-[#7FFFD4] text-lg mb-2">Response Time</h3>
+            <p class="text-white/80">
+              <i class="fas fa-clock mr-2"></i>
+              Usually within 24 hours
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+        <div
+          class="bg-[#7FFFD4]/20 w-16 h-16 rounded-full flex items-center justify-center mb-6"
+        >
+          <i class="fas fa-share-nodes text-[#7FFFD4] text-2xl"></i>
+        </div>
+        <h2 class="text-white text-2xl font-semibold mb-4">Social Media</h2>
+        <div class="space-y-4">
+          <a
+            href="https://x.com/dannytist73"
+            target="_blank"
+            class="flex items-center text-white/80 hover:text-[#7FFFD4] transition-colors p-2 rounded-lg hover:bg-white/5"
+          >
+            <i class="fab fa-x text-xl w-8"></i>
+            <span>Follow on X</span>
+          </a>
+          <a
+            href="https://github.com/dannytist73"
+            target="_blank"
+            class="flex items-center text-white/80 hover:text-[#7FFFD4] transition-colors p-2 rounded-lg hover:bg-white/5"
+          >
+            <i class="fab fa-github text-xl w-8"></i>
+            <span>Follow on GitHub</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/dannytist"
+            target="_blank"
+            class="flex items-center text-white/80 hover:text-[#7FFFD4] transition-colors p-2 rounded-lg hover:bg-white/5"
+          >
+            <i class="fab fa-linkedin text-xl w-8"></i>
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="mt-12 bg-white/10 backdrop-blur-sm rounded-xl p-8">
+      <div class="text-center">
+        <h2 class="text-white text-2xl font-semibold mb-4">
+          About Supporting This Project
+        </h2>
+        <p class="text-white/80 mb-6">
+          If you find Odysseus Travel Insight helpful and want to support its
+          development, consider buying me a coffee!
+        </p>
+        <a
+          href="https://buymeacoffee.com/dannytist"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center space-x-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+        >
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+            alt="Buy me a coffee"
+            class="h-6 w-6"
+          />
+          <span>Buy me a coffee</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('./partials/footer') %>

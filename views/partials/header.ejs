@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      <%= typeof title !== 'undefined' ? title : 'Odysseus Insights' %>
+    </title>
+    <meta
+      name="description"
+      content="Plan your family adventures with real-time travel costs and insights"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              raleway: ["Raleway", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen overflow-x-hidden">
+    <!-- Navigation -->
+    <!-- Update the nav element in header.ejs -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+      id="mainNav"
+    >
+      <div class="container mx-auto px-4 lg:px-8 py-6">
+        <div
+          class="nav-backdrop absolute inset-0 bg-gradient-to-b from-[#0d1437]/95 to-[#0d1437]/80 opacity-0 transition-opacity duration-300"
+        ></div>
+
+        <div class="flex items-center justify-between relative">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-4 z-50">
+            <img
+              src="/images/odysseus-logo-no-bg.png"
+              alt="Odysseus Insights"
+              class="h-16"
+            />
+            <span class="text-white font-raleway text-lg leading-tight">
+              Odysseus<br />INSIGHTS
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-12">
+            <a
+              href="/"
+              class="text-white hover:text-[#7FFFD4] transition-colors relative pb-1 <%= path === '/' ? 'border-b-2 border-[#7FFFD4] text-[#7FFFD4]' : '' %>"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="text-white hover:text-[#7FFFD4] transition-colors relative pb-1 <%= path === '/about' ? 'border-b-2 border-[#7FFFD4] text-[#7FFFD4]' : '' %>"
+              >About</a
+            >
+            <a
+              href="/voyage-compass"
+              class="text-white hover:text-[#7FFFD4] transition-colors relative pb-1 <%= path.includes('voyage-compass') ? 'border-b-2 border-[#7FFFD4] text-[#7FFFD4]' : '' %>"
+              >Travel Insights</a
+            >
+            <a
+              href="/contact"
+              class="text-white hover:text-[#7FFFD4] transition-colors relative pb-1 <%= path === '/contact' ? 'border-b-2 border-[#7FFFD4] text-[#7FFFD4]' : '' %>"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden text-white z-50 ml-auto"
+            data-mobile-menu
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars text-2xl menu-open"></i>
+            <i class="fas fa-times text-2xl menu-close hidden"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="fixed inset-0 bg-gradient-to-b from-[#0d1437]/98 to-[#0d1437]/98 backdrop-blur-lg hidden z-40 mobile-menu-overlay"
+        data-mobile-nav
+      >
+        <div
+          class="container mx-auto px-4 h-full flex flex-col justify-center items-center"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <a
+              href="/"
+              class="text-white text-2xl hover:text-[#7FFFD4] transition-colors <%= path === '/' ? 'text-[#7FFFD4]' : '' %>"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="text-white text-2xl hover:text-[#7FFFD4] transition-colors <%= path === '/about' ? 'text-[#7FFFD4]' : '' %>"
+              >About</a
+            >
+            <a
+              href="/voyage-compass"
+              class="text-white text-2xl hover:text-[#7FFFD4] transition-colors <%= path.includes('voyage-compass') ? 'text-[#7FFFD4]' : '' %>"
+              >Travel Insights</a
+            >
+            <a
+              href="/contact"
+              class="text-white text-2xl hover:text-[#7FFFD4] transition-colors <%= path === '/contact' ? 'text-[#7FFFD4]' : '' %>"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>

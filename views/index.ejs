@@ -1,0 +1,115 @@
+<%- include('./partials/header') %>
+
+<main
+  class="min-h-screen relative bg-cover bg-center w-full overflow-hidden"
+  style="
+    background-image: linear-gradient(
+        to top,
+        rgba(47, 73, 209, 0.8) 0%,
+        rgba(47, 73, 209, 0.4) 30%,
+        transparent 50%
+      ),
+      url('/images/header-background.png');
+  "
+>
+  <div class="w-full pt-32 lg:pt-40">
+    <!-- Hero Content -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <h1
+        class="text-white font-raleway font-light text-6xl md:text-8xl tracking-wide"
+      >
+        Discover your
+      </h1>
+      <div
+        class="text-[#7FFFD4] font-raleway text-7xl md:text-9xl font-semibold mt-2"
+      >
+        Next Adventure
+      </div>
+      <p class="text-white/90 text-xl max-w-3xl mt-8 leading-relaxed">
+        Let Odysseus Travel Insight guide your next adventure with personalized
+        recommendations, real-time currency insights, and comprehensive travel
+        planning powered by AI.
+      </p>
+    </div>
+
+    <!-- Features Section -->
+    <div
+      class="relative mt-20 w-full pb-16 bg-gradient-to-b from-transparent to-blue-900/90"
+    >
+      <div class="w-full border-t border-white/20"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/90"
+      ></div>
+
+      <div class="relative py-16 max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 items-start md:flex-1"
+          >
+            <div class="flex items-start space-x-6">
+              <div
+                class="bg-white/20 rounded-full p-4 w-16 h-16 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-robot text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#7FFFD4] text-2xl font-semibold mb-2">
+                  AI-Powered Planning
+                </h3>
+                <p class="text-white/80">
+                  Get personalized travel recommendations based on your
+                  preferences
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-6">
+              <div
+                class="bg-white/20 rounded-full p-4 w-16 h-16 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-chart-line text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#7FFFD4] text-2xl font-semibold mb-2">
+                  Real-time Insights
+                </h3>
+                <p class="text-white/80">
+                  Access current exchange rates and travel costs
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-6">
+              <div
+                class="bg-white/20 rounded-full p-4 w-16 h-16 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-map-marked-alt text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#7FFFD4] text-2xl font-semibold mb-2">
+                  Complete Itineraries
+                </h3>
+                <p class="text-white/80">
+                  Detailed day-by-day travel plans customized for you
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:ml-8 mt-8 md:mt-0 self-start">
+            <a
+              href="/voyage-compass"
+              class="inline-block bg-emerald-500 text-white text-lg font-semibold px-8 py-3 rounded-lg hover:bg-emerald-600 transition-all"
+            >
+              Plan Your Journey
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/how-it-works') %>
+</main>
+
+<%- include('./partials/footer') %>
