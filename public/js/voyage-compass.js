@@ -57,7 +57,22 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(data),
       });
 
-      const results = await response.json();
+      const responseText = await response.text();
+      console.log("Raw Response:", responseText);
+
+      let results;
+      try {
+        results = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("JSON Parsing Error:", parseError);
+        throw new Error(`Invalid response format: ${responseText}`);
+      }
+
+      if (!response.ok) {
+        throw new Error(results.message || "Failed to calculate trip details");
+      }
+
+      //const results = await response.json();
 
       if (!response.ok) {
         throw new Error(results.message || "Failed to calculate trip details");
