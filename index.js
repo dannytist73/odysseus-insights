@@ -12,7 +12,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(compression());
 app.use(cors());
@@ -31,16 +30,15 @@ app.use("/api/", limiter);
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
 
-// Home Page
+// Routes
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Odysseus Insights",
-    description: "Your Familly Travel Cost Calculator",
+    description: "Your Family Travel Cost Calculator",
     path: req.path,
   });
 });
 
-// About Page
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Us | Odysseus Insights",
@@ -56,7 +54,6 @@ app.get("/contact", (req, res) => {
   });
 });
 
-// Compass Routes
 app.use("/voyage-compass", compassRoutes);
 
 // Error handling
@@ -68,9 +65,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Odysseus Insights is soaring on port ${PORT}`);
-});
+// Only start server if not running on Vercel
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
 
-// For Vercel
 export default app;
