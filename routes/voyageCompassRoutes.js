@@ -1,7 +1,6 @@
 // voyageCompassRoutes.js
 import express from "express";
 import axios from "axios";
-import { config } from "../config.js";
 import rateLimit from "express-rate-limit";
 import NodeCache from "node-cache";
 
@@ -189,7 +188,7 @@ async function getExchangeRates(sourceCurrency, targetCurrency) {
 
     // Fetch latest exchange rates
     const response = await axios.get(
-      `https://v6.exchangerate-api.com/v6/${config.exchangeRateApiKey}/latest/${sourceCurrency}`
+      `https://v6.exchangerate-api.com/v6/${process.env.exchangeRateApiKey}/latest/${sourceCurrency}`
     );
 
     // Extract conversion rate
@@ -271,7 +270,7 @@ router.post("/calculate", limiter, async (req, res) => {
       url: "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions",
       headers: {
         "content-type": "application/json",
-        "X-RapidAPI-Key": config.rapidApiKey,
+        "X-RapidAPI-Key": process.env.rapidApiKey,
         "X-RapidAPI-Host":
           "cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com",
       },

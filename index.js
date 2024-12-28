@@ -69,7 +69,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Icarus Insights is soaring on port ${PORT}`);
+  console.log(`Odysseus Insights is soaring on port ${PORT}`);
 });
 
 // For Vercel
