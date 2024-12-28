@@ -228,6 +228,7 @@ router.get("/", (req, res) => {
 
 // Route to handle the AI analysis
 router.post("/calculate", limiter, async (req, res) => {
+  req.setTimeout(120000);
   try {
     const {
       destination,
@@ -279,7 +280,7 @@ router.post("/calculate", limiter, async (req, res) => {
         messages: [
           {
             role: "system",
-            content: `You are a travel planning AI assistant specializing in destination insights and currency conversion. Create a comprehensive travel plan for ${destination} from ${startDate} to ${endDate} (${duration} days). The user has a budget of ${budget} ${currency}. First, determine the local currency of ${destination} and provide accurate currency conversion. Then create a detailed day-by-day travel plan. Return a JSON response with this structure:
+            content: `You are a travel planning AI assistant specializing in destination insights and currency conversion. Create a comprehensive travel plan for ${destination} from ${startDate} to ${endDate} (${duration} days). The user has a budget of ${budget} ${currency}. First, determine the local currency of ${destination} and provide accurate currency conversion. Then create a detailed day-by-day travel plan. Return a valid and concise JSON response with this structure:
 {
     "budget": {
         "userBudget": {
