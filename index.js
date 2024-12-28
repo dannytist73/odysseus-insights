@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
-import bodyParser from "body-parser";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import compassRoutes from "./routes/voyageCompassRoutes.js";
@@ -17,23 +16,31 @@ const PORT = process.env.PORT || 3000;
 app.use(compression());
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files from public directory
+app.use(express.static(join(__dirname, "public")));
+
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 mins
+  max: 100, // Limit each IP to 100 request per 15 mins
+});
+app.use("/api/", limiter);
 
 // View engine setup
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
 
-// Home Page
+// Routes
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Odysseus Insights",
-    description: "Your Familly Travel Cost Calculator",
+    description: "Your Family Travel Cost Calculator",
     path: req.path,
   });
 });
 
-// About Page
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Us | Odysseus Insights",
@@ -49,18 +56,33 @@ app.get("/contact", (req, res) => {
   });
 });
 
-// Compass Routes
 app.use("/voyage-compass", compassRoutes);
 
 // Error handling
-app.use((err, req, res, ext) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render("error", {
     title: "Error",
     error: "Something went wrong!",
+    path: req.path,
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Odysseus Insights is soaring on port ${PORT}`);
+// 404 handler
+app.use((req, res) => {
+  res.status(404).render("error", {
+    title: "404 Not Found",
+    error: "Page not found",
+    path: req.path,
+  });
 });
+
+// Only listen when not running on Vercel
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+// For Vercel
+export default app;
