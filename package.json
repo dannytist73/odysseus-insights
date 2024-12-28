@@ -5,13 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css",
-    "watch:css": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch",
-    "build": "npm install && npm run build:css",
-    "vercel-build": "npm run build"
+    "dev": "nodemon index.js"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
