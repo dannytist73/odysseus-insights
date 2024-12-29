@@ -179,6 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
+  // got lazy to do the others, but best is to separate them into their display functiosn
+
   // voyage-compass.js
   function displayResults(results) {
     const budgetSection = displayBudgetOverview(results.budget);
